@@ -66,14 +66,14 @@ body {
     border-radius: 5px;
     background-color: rgba(113, 97, 97, 0.7);
     padding: 20px 5px 10px 10px; }
-    body main .top-3-imgs #images-container article, body main .random-imgs #images-container article {
+    body main .top-3-imgs .images-container article, body main .random-imgs .images-container article {
       display: inline-block;
       width: 400px;
       height: 360px;
       vertical-align: top;
       margin: 7px;
       padding-bottom: 8px; }
-      body main .top-3-imgs #images-container article div, body main .random-imgs #images-container article div {
+      body main .top-3-imgs .images-container article div, body main .random-imgs .images-container article div {
         background-color: brown;
         border-bottom: 0 solid rgba(30, 125, 47, 0.7);
         border-radius: 5px;
@@ -81,16 +81,16 @@ body {
         height: 300px;
         overflow: hidden;
         transition: 0.2s; }
-        body main .top-3-imgs #images-container article div:hover, body main .random-imgs #images-container article div:hover {
+        body main .top-3-imgs .images-container article div:hover, body main .random-imgs .images-container article div:hover {
           background-color: rgba(30, 125, 47, 0.7);
           border-bottom: 0;
           height: 100%;
           padding-bottom: 10px; }
-        body main .top-3-imgs #images-container article div p, body main .top-3-imgs #images-container article div span, body main .random-imgs #images-container article div p, body main .random-imgs #images-container article div span {
+        body main .top-3-imgs .images-container article div p, body main .top-3-imgs .images-container article div span, body main .random-imgs .images-container article div p, body main .random-imgs .images-container article div span {
           margin-top: 2px;
           padding-left: 5px;
           margin-bottom: 5px; }
-      body main .top-3-imgs #images-container article img, body main .random-imgs #images-container article img {
+      body main .top-3-imgs .images-container article img, body main .random-imgs .images-container article img {
         width: 400px;
         height: 300px; }
     body main form, body main h2 {

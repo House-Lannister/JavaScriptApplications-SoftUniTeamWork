@@ -2,26 +2,32 @@
     require.config({
         paths: {
             'jquery': 'libs/jquery-2.0.3.min',
+            'underscore': 'libs/underscore',
             'ajaxRequester': 'libs/ajax-requester',
             'modelOperator': 'models/data-operator',
             'category': 'models/category',
             'album': 'models/album',
             'photo': 'models/photo',
             'comment': 'models/comment',
-            'view': 'views/main',
             'controller': 'controllers/controller'
         }
     });
 
     require(['jquery', 'modelOperator', 'controller'],
         function ($, dataOperator, controller) {
-
             var ROOT_URL = 'https://api.parse.com/1/classes/';
             var Objects = {
                 CATEGORY: 'Category',
                 ALBUMS: 'Album',
                 PHOTO: 'Photo',
                 COMMENT: 'Comment'
+            };
+            var DisplayPhotos = {
+                'TOP_THREE': 'top three',
+                'RANDOMLY': 'random',
+                'BY_RATING': 'by rating',
+                'BY_NAME': 'by name',
+                'BY_DATE': 'by date'
             };
 
             var categoriesData = dataOperator.get(ROOT_URL, Objects.CATEGORY);

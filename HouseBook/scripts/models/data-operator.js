@@ -15,7 +15,7 @@ define(['category', 'album', 'photo', 'comment'], function(Category, Album, Phot
                     this.comment = new Comment(ROOT_URL);
                     break;
                 default:
-                    console.log('Switch error!');
+                    console.log('Switch model error!');
             }
         }
 

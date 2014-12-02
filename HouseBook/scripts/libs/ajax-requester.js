@@ -19,7 +19,7 @@ define(function() {
         };
 
         function makeGetRequest(url, success, error) {
-            return makeRequest('GET', url, null, success, error);
+            return makeRequest('GET', url, undefined, success, error);
         }
 
         function makePutRequest(url, data, success, error) {
@@ -31,14 +31,14 @@ define(function() {
         }
 
         function makeDeleteRequest(url, success, error) {
-            return makeRequest('DELETE', url, null, success, error);
+            return makeRequest('DELETE', url, undefined, success, error);
         }
 
         return {
             get: makeGetRequest,
             put: makePutRequest,
             post: makePostRequest,
-            delete: makeDeleteRequest
+            remove: makeDeleteRequest
         }
     }());
 });

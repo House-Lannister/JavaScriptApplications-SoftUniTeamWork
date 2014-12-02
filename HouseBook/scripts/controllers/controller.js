@@ -58,9 +58,9 @@ define(['underscore'], function(_){
 
                         var article = $('<article />');
                         var photoContainer = $('<div />')
-                            .addClass('topPhotosContainer');
+                            .addClass('photoContainer');
                         var imgFile = $('<img src=' + photoUrl + '/>')
-                            .addClass('topPhotosImages');
+                            .addClass('photoImg');
                         var photoInfo = $('<p />')
                             .addClass('pictureInfo')
                             .text(photoName);

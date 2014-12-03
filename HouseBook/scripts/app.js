@@ -33,11 +33,11 @@
                 'BY_DATE': 'by date'
             };
 
-            var photoData = dataOperator.get(ROOT_URL, dataObjects.PHOTO);
-            var photoCtrl = controller.get(photoData);
-
             var userData = dataOperator.get(ROOT_URL, dataObjects.USER);
             var userCtrl = controller.get(userData);
+
+            var photoData = dataOperator.get(ROOT_URL, dataObjects.PHOTO);
+            var photoCtrl = controller.get(photoData);
 
             var appFunctions = (function(){
                 function sortAllPhotos() {
@@ -46,26 +46,32 @@
                     var sortMethod = $('#filter').val();
                     switch (sortMethod) {
                         case 'rating':
-                            photoCtrl.displayPhotos('#allImages', DisplayPhotos.BY_RATING);
+                            photoCtrl.displayPhotos('#allImages', displayPhotos.BY_RATING);
                             break;
                         case 'name':
-                            photoCtrl.displayPhotos('#allImages', DisplayPhotos.BY_NAME);
+                            photoCtrl.displayPhotos('#allImages', displayPhotos.BY_NAME);
                             break;
                         case 'date':
-                            photoCtrl.displayPhotos('#allImages', DisplayPhotos.BY_DATE);
+                            photoCtrl.displayPhotos('#allImages', displayPhotos.BY_DATE);
                     }
+                }
+                function registerUser() {
+                    userCtrl.registerUser();
                 }
 
                 return {
-                    'sortAllPhotos': sortAllPhotos
+                    'sortAllPhotos': sortAllPhotos,
+                    'registerUser': registerUser
                 }
             }());
 
             $('#filter').on('change', appFunctions.sortAllPhotos);
-            $('#register').on('click', userCtrl.registerUser);
 
-            photoCtrl.displayPhotos('#topImages', displayPhotos.TOP_THREE);
             photoCtrl.displayPhotos('#allImages', displayPhotos.RANDOMLY);
+            photoCtrl.displayPhotos('#topImages', displayPhotos.TOP_THREE);
+
+
+            $('#register').on('click', appFunctions.registerUser);
 
 
     });

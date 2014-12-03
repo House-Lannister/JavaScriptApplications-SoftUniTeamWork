@@ -8,27 +8,25 @@ define(['underscore'], function(_){
 
         Controller.prototype.registerUser = function() {
             var newUser = (function() {
-                var username = $('#account').val();
-                var password = $('#pass').val();
+                var username = $('#username').val();
+                var password = $('#password').val();
                 var confirmPass = $('#pass-confirm').val();
                 var email = $('#email').val();
 
                 if (password === confirmPass) {
                     return {
-                        'username': username,
-                        'password': password,
-                        'email': email
+                        username: username,
+                        password: password,
+                        email: email
                     };
                 }
             }());
+            function successMessage() {
+                console.log('successful registration')
+            }
 
-            var success = (function() {
-                return {
-                    'massage' : console.log('successful registration')
-                }
-            }());
 
-            this.operator.user.add(newUser, success.massage, errorFunctions.errorMessage);
+            this.operator.user.add(newUser, successMessage, errorFunctions.errorMessage);
         };
 
         Controller.prototype.displayPhotos = function(selector, displayingMethod) {

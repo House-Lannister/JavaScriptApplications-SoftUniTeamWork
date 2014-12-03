@@ -103,7 +103,7 @@ body {
         margin: 5px auto;
         text-align: center; }
 
-#register {
+.register {
   background-color: rgba(30, 125, 47, 0.7);
   color: papayawhip;
   font-weight: 700;

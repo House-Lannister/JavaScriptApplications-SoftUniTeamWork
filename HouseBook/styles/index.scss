@@ -1,9 +1,9 @@
 ﻿@import url(http://fonts.googleapis.com/css?family=Luckiest+Guy);
 
 body {
-    margin:0;
-    padding:0;
-    background-image: url('../images/asphalt_6_512x512.png');
+    margin: 0;
+    padding: 0;
+    background-image: url('../images/background.jpg');
     background-attachment: fixed;
     font-family: Tahoma, Helvetica, sans-serif;
     color: papayawhip;
@@ -31,10 +31,11 @@ body {
         transition: 0.2s;
 
         &:hover {
-            height: 10px;
+            height:0;
+            border-bottom: 30px solid brown;
             text-decoration: underline;
-            border-bottom: 20px solid brown;
             background-color: brown;
+            color: papayawhip;
         }
     }
 
@@ -89,8 +90,8 @@ body {
         background-color: rgba(113, 97, 97, 0.70);
         padding: 20px 5px 10px 10px;
 
-        .top-3-imgs, .random-imgs {
-            #images-container {
+        section {
+            .images-container {
                 article {
                     display: inline-block;
                     width: 400px;
@@ -131,7 +132,9 @@ body {
         }
 
         form, h2 {
+            border-bottom: 2px solid white;
             width: 340px;
+            transition: 0.2s;
 
             input {
                 border-radius: 5px;
@@ -142,14 +145,18 @@ body {
                 text-align: center;
             }
         }
+
+        h2:hover {
+            width: 80%;
+        }
     }
 }
 
 #register {
     background-color: rgba(30, 125, 47, 0.70);
-    color:papayawhip;
-    font-weight:700;
-    font-size:20px;
+    color: papayawhip;
+    font-weight: 700;
+    font-size: 20px;
 }
 
 .sort-order {
@@ -198,4 +205,106 @@ body > footer > ul {
         border-bottom-color: rgba(30, 125, 47, 0);
         text-decoration: none;
     }
+}
+
+.clicked-image-container {
+    article {
+        display: inline-block;
+        width: 80%;
+        height: 500px;
+        vertical-align: top;
+        margin: 7px;
+        padding-bottom: 8px;
+
+        div {
+            background-color: brown;
+            border-bottom: 0 solid rgba(30, 125, 47, 0.70);
+            border-radius: 5px;
+            width: 58%;
+            height: 500px;
+            overflow: hidden;
+            transition: 0.2s;
+
+            &:hover {
+                background-color: rgba(30, 125, 47, 0.70);
+                border-bottom: 0;
+                width: 100%;
+                padding-bottom: 10px;
+            }
+
+            p, span {
+                margin-top: 2px;
+                padding-left: 5px;
+                margin-bottom: 5px;
+            }
+        }
+
+        img {
+            width: 600px;
+            height: 500px;
+        }
+    }
+}
+
+.user-account-albums, .clicked-album-container {
+    article {
+        display: inline-block;
+        width: 200px;
+        height: 160px;
+        vertical-align: top;
+        margin: 7px;
+        padding-bottom: 8px;
+
+        div {
+            background-color: brown;
+            border-bottom: 0 solid rgba(30, 125, 47, 0.70);
+            border-radius: 5px;
+            width: 200px;
+            height: 100px;
+            overflow: hidden;
+            transition: 0.2s;
+
+            &:hover {
+                background-color: rgba(30, 125, 47, 0.70);
+                border-bottom: 0;
+                height: 100%;
+                padding-bottom: 10px;
+            }
+
+            p, span {
+                margin-top: 2px;
+                padding-left: 5px;
+                padding-right: 5px;
+                margin-bottom: 5px;
+            }
+        }
+
+        img {
+            width: 200px;
+            height: 100px;
+        }
+    }
+}
+
+.glyphicon.glyphicon-chevron-down, .glyphicon.glyphicon-chevron-up {
+    float: right;
+    font-size: 30px;
+    cursor: pointer;
+    transition: 0.2s;
+
+    &:hover {
+        text-shadow: 0 16px 1px;
+    }
+}
+
+.glyphicon.glyphicon-chevron-down {
+    color: #ff0000;
+}
+
+.glyphicon.glyphicon-chevron-up {
+    color: rgb(0, 255, 46);
+}
+
+.sort-order {
+    color: black;
 }

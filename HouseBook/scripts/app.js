@@ -16,6 +16,38 @@
 
     require(['jquery', 'modelOperator', 'controller'],
         function ($, dataOperator, controller) {
+            var domManipulations = (function() {
+                function hideTabs(hideOne, hideTwo, hideThree, hideFour, showTab) {
+                    $(hideOne).hide();
+                    $(hideTwo).hide();
+                    $(hideThree).hide();
+                    $(hideFour).hide();
+                    $(showTab).show();
+                }
+                return {
+                    'hideTabs': hideTabs
+                }
+            }());
+            domManipulations.hideTabs('#albums', '#upload', '#logIn', '#contacts', '#home');
+
+            (function(){
+                $('#homeTab').on('click', function() {
+                    domManipulations.hideTabs('#albums', '#upload', '#logIn', '#contacts', '#home');
+                });
+                $('#albumsTab').on('click', function() {
+                    domManipulations.hideTabs('#home', '#upload', '#logIn', '#contacts', '#albums');
+                });
+                $('#uploadTab').on('click', function() {
+                    domManipulations.hideTabs('#albums', '#home', '#logIn', '#contacts', '#upload');
+                });
+                $('#contactsTab').on('click', function() {
+                    domManipulations.hideTabs('#albums', '#upload', '#logIn', '#home', '#contacts');
+                });
+                $('#logInTab').on('click', function() {
+                    domManipulations.hideTabs('#albums', '#upload', '#home', '#contacts', '#logIn');
+                });
+            }());
+
             var ROOT_URL = 'https://api.parse.com/1/classes/';
 
             var dataObjects = {

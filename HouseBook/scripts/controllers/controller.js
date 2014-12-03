@@ -6,6 +6,32 @@ define(['underscore'], function(_){
             this.operator = dataOperator;
         }
 
+        Controller.prototype.logIn = function() {
+            var logInName = $('#logInName').val();
+            var logInPass = $('#logInPass').val();
+
+            function checkForUser(data) {
+                for (var obj in data.results) {
+                    var user = data.results[obj];
+                    var username = user.username;
+                    var pass = user.password;
+
+                    if (username === logInName) {
+                        if (!localStorage.user) {
+                            localStorage.setItem('user', username);
+                            $('#logInTab').hide();
+                            $('#userTab').show();
+                        }
+                        $('#user').text(username);
+                        $('#logIn').hide();
+                        $('#userAlbums').show();
+                    }
+                }
+            }
+
+            this.operator.user.getAll(checkForUser, errorFunctions.errorMessage);
+        };
+
         Controller.prototype.registerUser = function() {
             var newUser = (function() {
                 var username = $('#username').val();

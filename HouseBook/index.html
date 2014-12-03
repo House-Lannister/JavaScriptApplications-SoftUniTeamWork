@@ -7,22 +7,17 @@
 </head>
 <body>
     <h1>
-        Photo gallery's site Example
+    	TEAM "HOUSE LANNISTER"
     </h1>
     <header>
-        <div class="login">
-            <span>Log In:</span>
-            <input id="account" type="text" placeholder="Account name" />
-            <input id="pass" type="password" placeholder="Password" />
-            <input id="log-on" src="#" type="submit" value="Log In" />
-            <input id="log-in" src="#" type="button" value="Sign Up" />
-        </div>
         <nav>
             <ul>
                 <a href="index.html" id="home"><li>Home</li></a>
-                <a href="#" id="chart"><li>Top5 Gallery</li></a>
-                <a href="#" id="contacts"><li>Contacts</li></a>
-                <a href="#" id="upload"><li>Upload images</li></a>
+                <a href="#" id="upload"><li>Albums</li></a>
+				<a href="#" id="upload"><li>Upload image</li></a>
+				<a href="#" id="upload"><li>Sign Up</li></a>
+				<a href="#" id="upload"><li>Log In</li></a>
+
             </ul>
         </nav>
     </header>
@@ -40,16 +35,49 @@
             </div>
         </nav>
         <section class="top-3-imgs">
-            <h2>Top 3 Images</h2>
+            <h2>Top 3 Images:</h2>
             <div class="images-container" id="topImages">
 
             </div>
         </section>
         <section class="random-imgs">
             <div class="images-container" id="allImages">
-                <h2>All Images</h2>
+                <h2>Random 3 Images:</h2>
 
             </div>
+        </section>
+        <section class="random-imgs">
+            <div class="images-container" id="albums">
+                <h2>Albums:</h2>
+            </div>
+        </section>
+        <section id="upload">
+            <h2>Upload image:</h2>
+            <form class="login">
+                <input id="username" type="text" placeholder="Image name" />
+                <input id="password" type="password" placeholder="Album" />
+                <input type="file" name="fileToUpload" id="fileToUpload">
+                <input id="register" src="#" type="button" value="Upload" />
+            </form>
+        </section>
+        <section id="signUp">
+            <h2>Sign Up:</h2>
+            <form class="login">
+                <input id="username" type="text" placeholder="Account name" />
+                <input id="password" type="password" placeholder="Password" />
+                <input id="pass-confirm" type="password" placeholder="Confirm Password" />
+                <input id="email" type="email" placeholder="Email" />
+                <input id="register" src="#" type="button" value="Register" />
+            </form>
+        </section>
+
+        <section id="logIn">
+            <h2>Log In:</h2>
+            <form class="login">
+            	<input id="account" type="text" placeholder="Account name" />
+	            <input id="pass" type="password" placeholder="Password" />
+                <input id="register" src="#" type="button" value="Log In" />
+            </form>
         </section>
     </main>
     <footer>

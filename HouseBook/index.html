@@ -6,29 +6,16 @@
 
 </head>
 <body>
-    <script>
-        (function (d, s, id) {
-            var js, fjs = d.getElementsByTagName(s)[0];
-            if (d.getElementById(id)) return;
-            js = d.createElement(s); js.id = id;
-            js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1&version=v2.0";
-            fjs.parentNode.insertBefore(js, fjs);
-        }(document, 'script', 'facebook-jssdk'));
-    </script>
-    <div id="fb-root"></div>
-
     <h1>
         Photo gallery's site Example
     </h1>
     <header>
         <div class="login">
-            <span>
-                Log On:
-            </span>
+            <span>Log In:</span>
             <input id="account" type="text" placeholder="Account name" />
             <input id="pass" type="password" placeholder="Password" />
-            <input id="log-on" src="#" type="submit" value="Log On" />
-            <input id="log-in" src="#" type="button" value="Log In" />
+            <input id="log-on" src="#" type="submit" value="Log In" />
+            <input id="log-in" src="#" type="button" value="Sign Up" />
         </div>
         <nav>
             <ul>
@@ -43,54 +30,25 @@
     <main>
         <nav class="filter">
             <div class="sort-order">
-                <span>Filter by:</span>
+                <span>Sort by:</span>
                 <select id="filter">
-                    <option id="rating">Rating</option>
-                    <option id="name">Name</option>
-                    <option id="date">Date</option>
+                    <option disabled='disabled' selected='selected' hidden='hidden'>-sort method-</option>
+                    <option value="rating">Rating</option>
+                    <option value="name">Name</option>
+                    <option value="date">Date</option>
                 </select>
             </div>
         </nav>
         <section class="top-3-imgs">
             <h2>Top 3 Images</h2>
             <div class="images-container" id="topImages">
-                <article>
-                    <div class="photoContainer">
-                        <img class="photoImg" src="images/234003.jpg" />
-                        <p class="pictureInfo">Crysys 2 wallpapper</p>
-                        <span>Vote:</span>
-                        <span class="votesNumber"></span>
-                    </div>
-                </article>
-                <article>
-                    <div class="photoContainer">
-                        <img class="photoImg" src="images/234003.jpg" />
-                        <p class="pictureInfo">Crysys 2 wallpapper</p>
-                        <span>Vote:</span>
-                        <span class="votesNumber"></span>
-                    </div>
-                </article>
-                <article>
-                    <div class="photoContainer">
-                        <img class="photoImg" src="images/234003.jpg" />
-                        <p class="pictureInfo">Crysys 2 wallpapper</p>
-                        <span>Vote:</span>
-                        <span class="votesNumber"></span>
-                    </div>
-                </article>
+
             </div>
         </section>
-        <section class="random-imgs" id="allImages">
-            <div class="images-container">
+        <section class="random-imgs">
+            <div class="images-container" id="allImages">
                 <h2>All Images</h2>
-                <article>
-                    <div>
-                        <img src="images/234003.jpg" />
-                        <p class="pictureinfo1">Crysys 2 wallpapper</p>
-                        <span>Vote:</span>
-                        <span class="vote"></span>
-                    </div>
-                </article>
+
             </div>
         </section>
     </main>
@@ -100,7 +58,7 @@
                 <img src="images/wheel.png" />
             </li>
             <li>
-                <div class="fb-like-box" data-href="https://www.facebook.com/FacebookDevelopers" data-width="200" data-height="100" data-colorscheme="light" data-show-faces="true" data-header="false" data-stream="false" data-show-border="false"></div>
+
             </li>
             <li>
                 Links:
@@ -118,9 +76,8 @@
             </li>
         </ul>
     </footer>
-
-
     <!--Type your Script reletions here-->
+    <script src="scripts/libs/require.js" data-main="scripts/app"></script>
     <script src="scripts/libs/jquery-1.11.1.min.js"></script>
 </body>
 </html>

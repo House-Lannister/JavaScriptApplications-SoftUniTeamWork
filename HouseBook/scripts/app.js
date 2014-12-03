@@ -9,6 +9,7 @@
             'album': 'models/album',
             'photo': 'models/photo',
             'comment': 'models/comment',
+            'user': 'models/user',
             'controller': 'controllers/controller'
         }
     });
@@ -16,13 +17,15 @@
     require(['jquery', 'modelOperator', 'controller'],
         function ($, dataOperator, controller) {
             var ROOT_URL = 'https://api.parse.com/1/classes/';
-            var Objects = {
+
+            var dataObjects = {
                 CATEGORY: 'Category',
                 ALBUMS: 'Album',
                 PHOTO: 'Photo',
-                COMMENT: 'Comment'
+                COMMENT: 'Comment',
+                USER: 'User'
             };
-            var DisplayPhotos = {
+            var displayPhotos = {
                 'TOP_THREE': 'top three',
                 'RANDOMLY': 'random',
                 'BY_RATING': 'by rating',
@@ -30,14 +33,40 @@
                 'BY_DATE': 'by date'
             };
 
-            var categoriesData = dataOperator.get(ROOT_URL, Objects.CATEGORY);
-            var categoriesCtrl = controller.get(categoriesData);
-            categoriesCtrl.load('body', Objects.CATEGORY);
-
-            var photoData = dataOperator.get(ROOT_URL, Objects.PHOTO);
+            var photoData = dataOperator.get(ROOT_URL, dataObjects.PHOTO);
             var photoCtrl = controller.get(photoData);
-            photoCtrl.load('body', Objects.PHOTO);
 
-            $('<div />').text('Hello, World!').appendTo('body');
+            var userData = dataOperator.get(ROOT_URL, dataObjects.USER);
+            var userCtrl = controller.get(userData);
+
+            var appFunctions = (function(){
+                function sortAllPhotos() {
+                    $('#allImages').empty();
+                    $('#topImages').empty();
+                    var sortMethod = $('#filter').val();
+                    switch (sortMethod) {
+                        case 'rating':
+                            photoCtrl.displayPhotos('#allImages', DisplayPhotos.BY_RATING);
+                            break;
+                        case 'name':
+                            photoCtrl.displayPhotos('#allImages', DisplayPhotos.BY_NAME);
+                            break;
+                        case 'date':
+                            photoCtrl.displayPhotos('#allImages', DisplayPhotos.BY_DATE);
+                    }
+                }
+
+                return {
+                    'sortAllPhotos': sortAllPhotos
+                }
+            }());
+
+            $('#filter').on('change', appFunctions.sortAllPhotos);
+            $('#register').on('click', userCtrl.registerUser);
+
+            photoCtrl.displayPhotos('#topImages', displayPhotos.TOP_THREE);
+            photoCtrl.displayPhotos('#allImages', displayPhotos.RANDOMLY);
+
+
     });
 }());

@@ -1,4 +1,5 @@
-define(['category', 'album', 'photo', 'comment'], function(Category, Album, Photo, Comment){
+define(['category', 'album', 'photo', 'comment', 'user'],
+    function(Category, Album, Photo, Comment, User){
     return (function() {
         function Operator(ROOT_URL, object) {
             switch (object) {
@@ -13,6 +14,9 @@ define(['category', 'album', 'photo', 'comment'], function(Category, Album, Phot
                     break;
                 case 'Comment':
                     this.comment = new Comment(ROOT_URL);
+                    break;
+                case 'User':
+                    this.user = new User(ROOT_URL);
                     break;
                 default:
                     console.log('Switch model error!');

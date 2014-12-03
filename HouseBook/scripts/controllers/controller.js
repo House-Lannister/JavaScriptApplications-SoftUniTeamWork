@@ -6,11 +6,36 @@ define(['underscore'], function(_){
             this.operator = dataOperator;
         }
 
+        Controller.prototype.registerUser = function() {
+            var newUser = (function() {
+                var username = $('#account').val();
+                var password = $('#pass').val();
+                var confirmPass = $('#pass-confirm').val();
+                var email = $('#email').val();
+
+                if (password === confirmPass) {
+                    return {
+                        'username': username,
+                        'password': password,
+                        'email': email
+                    };
+                }
+            }());
+
+            var success = (function() {
+                return {
+                    'massage' : console.log('successful registration')
+                }
+            }());
+
+            this.operator.user.add(newUser, success.massage, errorFunctions.errorMessage);
+        };
+
         Controller.prototype.displayPhotos = function(selector, displayingMethod) {
             var successFunctions = (function () {
 
                 function displayTopImages(data) {
-                    var sortedPhotos = _.sortBy(data.results, 'votes');
+                    var sortedPhotos = _.sortBy(data.results, 'votes').reverse();
                     var topThreePhotos = _.first(sortedPhotos, 3);
                     displayPhotos(topThreePhotos);
                 }
@@ -28,7 +53,7 @@ define(['underscore'], function(_){
                     displayPhotos(randomPhotosArr);
                 }
                 function displayPhotosByRating(data) {
-                    var sortedPhotos = _.sortBy(data.results, 'votes');
+                    var sortedPhotos = _.sortBy(data.results, 'votes').reverse();
                     displayPhotos(sortedPhotos);
                 }
                 function displayPhotosByName(data) {
@@ -59,7 +84,7 @@ define(['underscore'], function(_){
                         var article = $('<article />');
                         var photoContainer = $('<div />')
                             .addClass('photoContainer');
-                        var imgFile = $('<img src=' + photoUrl + '/>')
+                        var imgFile = $('<img src="' + photoUrl + '" />')
                             .addClass('photoImg');
                         var photoInfo = $('<p />')
                             .addClass('pictureInfo')
@@ -75,7 +100,7 @@ define(['underscore'], function(_){
                         imgFile.appendTo(photoContainer);
                         photoInfo.appendTo(photoContainer);
                         photoVoteSpan.appendTo(photoContainer);
-                        photoVotes.appendTo(photoContainer)
+                        votesNumber.appendTo(photoContainer)
                     }
                 }
             }());
@@ -127,12 +152,16 @@ define(['underscore'], function(_){
                 function loadComments(data) {
                     // TODO...
                 }
+                function loadUsers(data) {
+
+                }
 
                 return {
                     'loadCategories': loadCategories,
                     'loadAlbums': loadAlbums,
                     'loadPhotos': loadPhotos,
-                    'loadComments': loadComments
+                    'loadComments': loadComments,
+                    'loadUsers': loadUsers
                 }
             }());
             switch (object) {
@@ -151,6 +180,10 @@ define(['underscore'], function(_){
                 case 'Comment':
                     this.operator.comment.getAll(
                         successFunctions.loadComments, errorFunctions.errorMessage);
+                    break;
+                case 'User':
+                    this.operator.user.getAll(
+                        successFunctions.loadUsers, errorFunctions.errorMessage);
                     break;
                 default:
                     console.log('Switch controller error!');

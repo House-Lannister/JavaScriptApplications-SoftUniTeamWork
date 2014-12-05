@@ -3,13 +3,10 @@ define(function() {
         PARSE_REST_API_KEY = 'lKFUeIuEfilTlWGVPjI9wXKLhITgdhbMgIlKKN7k';
 
     return (function() {
-        var makeRequest = function makeRequest(method, url, data, success, error) {
+        var makeRequest = function makeRequest(method, headers, url, data, success, error) {
             return $.ajax({
                 type: method,
-                headers: {
-                    "X-Parse-Application-Id": PARSE_APP_ID,
-                    "X-Parse-REST-API-Key": PARSE_REST_API_KEY
-                },
+                headers: headers,
                 url: url,
                 contentType: 'application/json',
                 data: JSON.stringify(data),
@@ -18,20 +15,20 @@ define(function() {
             })
         };
 
-        function makeGetRequest(url, success, error) {
-            return makeRequest('GET', url, undefined, success, error);
+        function makeGetRequest(headers, url, success, error) {
+            return makeRequest('GET', headers, url, undefined, success, error);
         }
 
-        function makePutRequest(url, data, success, error) {
-            return makeRequest('PUT', url, data, success, error);
+        function makePutRequest(headers, url, data, success, error) {
+            return makeRequest('PUT', headers, url, data, success, error);
         }
 
-        function makePostRequest(url, data, success, error) {
-            return makeRequest('POST', url, data, success, error);
+        function makePostRequest(headers, url, data, success, error) {
+            return makeRequest('POST', headers, url, data, success, error);
         }
 
-        function makeDeleteRequest(url, success, error) {
-            return makeRequest('DELETE', url, undefined, success, error);
+        function makeDeleteRequest(headers, url, success, error) {
+            return makeRequest('DELETE', headers, url, undefined, success, error);
         }
 
         return {

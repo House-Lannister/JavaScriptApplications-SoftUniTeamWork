@@ -12,109 +12,42 @@
     <header>
         <nav>
             <ul>
-                <a href="#" id="homeTab"><li>Home</li></a>
-                <a href="#" id="albumsTab"><li>Albums</li></a>
-				<a href="#" id="uploadTab"><li>Upload image</li></a>
-				<a href="#" id="contactsTab"><li>Contacts</li></a>
-				<a href="#" id="logInTab"><li>Log In</li></a>
-				<a href="#" id="userTab"><li id="user">User</li></a>
+                <a href="#/" id="homeTab"><li>Home</li></a>
+                <a href="#/albums" id="albumsTab"><li>Albums</li></a>
+				<a href="#/upload" id="uploadTab"><li>Upload image</li></a>
+				<a href="#/contacts" id="contactsTab"><li>Contacts</li></a>
+				<a href="#/login" id="logInTab"><li>Log In</li></a>
+				<a href="#/profile" id="userTab"><li id="user">User</li></a>
             </ul>
         </nav>
     </header>
 
-    <main>
-    	<section id="home">
-	        <nav class="filter">
-	            <div class="sort-order">
-	                <span>Sort by:</span>
-	                <select id="filter">
-	                    <option disabled='disabled' selected='selected' hidden='hidden'>-sort method-</option>
-	                    <option value="rating">Rating</option>
-	                    <option value="name">Name</option>
-	                    <option value="date">Date</option>
-	                </select>
-	            </div>
-	        </nav>
-	        <section class="top-3-imgs">
-	            <h2>Top 3 Images:</h2>
-	            <div class="images-container" id="topImages">
+    <main id="main">
 
-	            </div>
-	        </section>
-	        <section class="random-imgs">
-	            <div class="images-container" id="allImages">
-	                <h2>Random 3 Images:</h2>
-
-	            </div>
-	        </section>
-        </section>
-        <section class="random-imgs">
-            <div class="images-container" id="albums">
-                <h2>Albums:</h2>
-            </div>
-        </section>
-        <section id="upload">
-            <h2>Upload image:</h2>
-            <form class="login">
-                <input id="imageName" type="text" placeholder="Image name" />
-                <input id="albumName" type="password" placeholder="Album" />
-                <input type="file" name="fileToUpload" id="fileToUpload">
-                <input class="register" id="uploadButton" src="#" type="button" value="Upload" />
-            </form>
-        </section>
-        <section id="contacts">
-        	
-        </section>
-        <section id="logIn">
-	        <section>
-	            <h2>Sign Up:</h2>
-	            <form class="login">
-	                <input id="signUpName" type="text" placeholder="Account name" />
-	                <input id="signUpPass" type="password" placeholder="Password" />
-	                <input id="signUpPassConfirm" type="password" placeholder="Confirm Password" />
-	                <input id="signUpEmail" type="email" placeholder="Email" />
-	                <input class="register" id="signUpButton" src="#" type="button" value="Register" />
-	            </form>
-	        </section>
-	        <section>
-	            <h2>Log In:</h2>
-	            <form class="login">
-	            	<input id="logInName" type="text" placeholder="Account name" />
-		            <input id="logInPass" type="password" placeholder="Password" />
-	                <input class="register" id="logInButton" src="#" type="button" value="Log In" />
-	            </form>
-	        </section>
-        </section>
-        <section id="userAlbums">
-        	
-        </section>
     </main>
     <footer>
         <ul>
             <li>
-                <img src="images/wheel.png" />
+
             </li>
             <li>
 
             </li>
             <li>
-                Links:
                 <ul class="links">
                     <li>
-                        <a href="https://softuni.bg/">SoftUni</a>
+
                     </li>
                     <li>
-                        <a href="http://zamunda.net/catalogue.php">Zamunda</a>
+
                     </li>
                     <li>
-                        <a href="http://wall.alphacoders.com/">AbyssWallpaper</a>
+
                     </li>
                 </ul>
             </li>
         </ul>
     </footer>
-    <!--Type your Script reletions here-->
     <script src="scripts/libs/require.js" data-main="scripts/app"></script>
-    <script src="scripts/libs/jquery-1.11.1.min.js"></script>
 </body>
 </html>

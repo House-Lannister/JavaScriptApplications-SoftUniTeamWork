@@ -1,22 +1,23 @@
-define(['category', 'album', 'photo', 'comment', 'user'],
-    function(Category, Album, Photo, Comment, User){
+define(['modelContainer'],
+    function(Model){
+
     return (function() {
-        function Operator(ROOT_URL, object) {
+        function Operator(object) {
             switch (object) {
                 case 'Category':
-                    this.category = new Category(ROOT_URL);
+                    this.category = new Model.Category();
                     break;
                 case 'Album':
-                    this.album = new Album(ROOT_URL);
+                    this.album = new Model.Album();
                     break;
                 case 'Photo':
-                    this.photo = new Photo(ROOT_URL);
+                    this.photo = new Model.Photo();
                     break;
                 case 'Comment':
-                    this.comment = new Comment(ROOT_URL);
+                    this.comment = new Model.Comment();
                     break;
                 case 'User':
-                    this.user = new User(ROOT_URL);
+                    this.user = new Model.User();
                     break;
                 default:
                     console.log('Switch model error!');
@@ -24,8 +25,8 @@ define(['category', 'album', 'photo', 'comment', 'user'],
         }
 
         return {
-            get: function(ROOT_URL, object) {
-                return new Operator(ROOT_URL, object);
+            get: function(object) {
+                return new Operator(object);
             }
         }
     }());

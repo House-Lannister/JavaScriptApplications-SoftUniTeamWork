@@ -6,53 +6,95 @@ define(['underscore', 'mustache', 'viewContainer'], function(_, Mustache, View) 
             this.operator = dataOperator;
         }
 
-        Controller.prototype.logIn = function() {
-            var logInName = $('#logInName').val();
-            var logInPass = $('#logInPass').val();
+        Controller.prototype.userLogin = function() {
+            var loginData = {
+                username: $('#logInName').val(),
+                password: $('#logInPass').val()
+            };
 
-            function checkForUser(data) {
-                for (var obj in data.results) {
-                    var user = data.results[obj];
-                    var username = user.username;
-                    var pass = user.password;
-
-                    if (username === logInName) {
-                        if (!localStorage.user) {
-                            localStorage.setItem('user', username);
-                            $('#logInTab').hide();
-                            $('#userTab').show();
-                        }
-                        $('#user').text(username);
-                        $('#logIn').hide();
-                        $('#userAlbums').show();
-                    }
-                }
-            }
-
-            this.operator.user.getAll(checkForUser, errorFunctions.errorMessage);
+            this.operator.login.loginUser(loginData)
+                .then(); //TODO
         };
 
         Controller.prototype.registerUser = function() {
-            var newUser = (function() {
-                var username = $('#username').val();
-                var password = $('#password').val();
-                var confirmPass = $('#pass-confirm').val();
-                var email = $('#email').val();
+            var newUserData = {
+                username: $('#username').val(),
+                password: $('#password').val(),
+                email: $('#email').val()
+            };
 
-                if (password === confirmPass) {
-                    return {
-                        username: username,
-                        password: password,
-                        email: email
-                    };
+            this.operator.register.registerUser(newUserData)
+                .then(); //TODO
+        };
+
+        Controller.prototype.displayAlbums = function(selector) {
+            var _this = this;
+            this.operator.user.getAll()
+                .then(
+                function(data) {
+                    var userData = data.results;
+                    for (var user in userData) {
+                        $(selector).append(Mustache.render(View.albumOwner, userData[user]));
+                        _this.operator.album.getByUser(userData[user].objectId)
+                            .then(
+                            function(data) {
+                                var albums = data.results;
+
+                                for (var album in albums) {
+                                    var albumId = albums[album].objectId;
+
+                                    _this.operator.photo.getByAlbum(albumId)
+                                        .then(
+                                        function(dataPhoto) {
+                                            var photo = dataPhoto.results[0];
+                                                return {
+                                                    url: photo.file.url,
+                                                    objectId: photo.album.objectId
+                                            }
+                                        },
+                                        function(error) {
+                                            errorFunctions.errorMessage(error);
+                                        }
+                                    ).then(
+                                        function(result) {
+                                            var url = result.url;
+                                            var newData = {
+                                                photoUrl: url
+                                            };
+                                            _this.operator.album.put(result.objectId, newData);
+                                        },
+                                        function(error) {
+                                            errorFunctions.errorMessage(error);
+                                        }
+                                    );
+                                    $(selector).append(Mustache.render(View.listAlbums, albums[album]));
+                                }
+                            },
+                            function(error) {
+                                errorFunctions.errorMessage(error);
+                            }
+                        )
+                    }
+
+                },
+                function(error) {
+                    errorFunctions.errorMessage(error);
+                })
+
+        };
+
+        Controller.prototype.displayAlbumPhotoViewer = function(selector) {
+            var _this = this;
+            var id = '';
+            this.operator.photo.getByAlbum(id)
+                .then(
+                function(data) {
+                    var photos = data.results;
+                    for (var photo in photos) {
+                        $(selector).append(Mustache.render(View.photoViewer, photos[photo]))
+                    }
                 }
-            }());
-            function successMessage() {
-                console.log('successful registration')
-            }
-
-
-            this.operator.user.add(newUser, successMessage, errorFunctions.errorMessage);
+            );
         };
 
         Controller.prototype.displayPhotos = function(selector, displayingMethod) {

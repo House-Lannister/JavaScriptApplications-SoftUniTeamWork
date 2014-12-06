@@ -1,7 +1,7 @@
 define(function(){
     return (function() {
         var homeView = {
-            home: '<section id="home">' +
+            html: '<section id="home">' +
         '<nav class="filter">' +
         '<div class="sort-order">' +
         '<span>Filter by: </span>' +
@@ -37,7 +37,7 @@ define(function(){
         var logInView;
 
         var listPhoto = {
-            list: '<article>' +
+            html: '<article>' +
             '<div class="photoContainer">' +
             '<img src="{{file.url}}" class="photoImg" />' +
             '<p class="pictureInfo">{{name}}</p>' +
@@ -47,14 +47,36 @@ define(function(){
             '</article>'
         };
 
+        var albumOwner = {
+            html: '<h2>{{username}}\'s albums</h2>'
+        };
+
+        var listUserAlbums = {
+            html: '<article class="userAlbumContainer">' +
+        '<div class="userAlbumDiv">' +
+        '<a href="#/user/{{userId}}">' +
+        '<img class="lastPicUploaded" src="{{photoUrl}}" />' +
+        '</a>' +
+        '<p class="albumPicInfo">{{name}}</p>' +
+        '</div>' +
+        '</article>'
+        };
+
+        var photoViewer = {
+
+        };
+
         return {
-            Home: homeView.home,
+            Home: homeView.html,
             Albums: albumsView,
             Upload: uploadView,
             Contacts: contactsView,
             Profile: profileView,
             Log_In: logInView,
-            listPhoto: listPhoto.list
+            listPhoto: listPhoto.html,
+            listAlbums: listUserAlbums.html,
+            albumOwner: albumOwner.html,
+            photoViewer: photoViewer
         }
     }());
 });

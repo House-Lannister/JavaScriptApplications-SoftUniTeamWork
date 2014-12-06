@@ -23,20 +23,25 @@
                     var sortMethod = $('#filter').val();
                     switch (sortMethod) {
                         case 'rating':
-                            photoCtrl.displayPhotos('#allImages', Enum.displayPhotos.BY_RATING);
+                            mainCtrl.displayPhotos('#allImages', Enum.displayPhotos.BY_RATING);
                             break;
                         case 'name':
-                            photoCtrl.displayPhotos('#allImages', Enum.displayPhotos.BY_NAME);
+                            mainCtrl.displayPhotos('#allImages', Enum.displayPhotos.BY_NAME);
                             break;
                         case 'date':
-                            photoCtrl.displayPhotos('#allImages', Enum.displayPhotos.BY_DATE);
+                            mainCtrl.displayPhotos('#allImages', Enum.displayPhotos.BY_DATE);
                     }
                 }
+
+                function displayAlbumPhotoViewer() {
+
+                }
+
                 function registerUser() {
-                    userCtrl.registerUser();
+                    mainCtrl.registerUser();
                 }
                 function loginUser() {
-                    userCtrl.logIn();
+                    mainCtrl.logIn();
                 }
 
                 return {
@@ -46,19 +51,10 @@
                 }
             }());
 
-            // Data operators for all models in the data base
-            var categoryData = dataOperator.get(Enum.dataObjects.CATEGORY);
-            var albumData = dataOperator.get(Enum.dataObjects.ALBUMS);
-            var photoData = dataOperator.get(Enum.dataObjects.PHOTO);
-            var commentData = dataOperator.get(Enum.dataObjects.COMMENT);
-            var userData = dataOperator.get(Enum.dataObjects.USER);
+            var databaseOperator = dataOperator.get();
+            var mainCtrl = controller.get(databaseOperator);
 
-            // Controllers for all models in the data base
-            var categoryCtrl = controller.get(categoryData);
-            var albumCtrl = controller.get(albumData);
-            var photoCtrl = controller.get(photoData);
-            var commentCtrl = controller.get(commentData);
-            var userCtrl = controller.get(userData);
+            mainCtrl.displayAlbums('#listOfAlbums')
 
             //$('#register').on('click', appFunctions.registerUser);
             //$('#logInButton').on('click', appFunctions.loginUser);
@@ -67,8 +63,8 @@
                 this.get('#/', function() {
                     $('#main').html(Mustache.render(View.Home));
                     $('#filter').on('change', appFunctions.sortAllPhotos);
-                    photoCtrl.displayPhotos('#allImages', Enum.displayPhotos.RANDOMLY);
-                    photoCtrl.displayPhotos('#topImages', Enum.displayPhotos.TOP_THREE);
+                    mainCtrl.displayPhotos('#allImages', Enum.displayPhotos.RANDOMLY);
+                    mainCtrl.displayPhotos('#topImages', Enum.displayPhotos.TOP_THREE);
                 });
                 //this.get('#/albums', function() {
                 //    $('#main').html(Mustache.render(View.Albums));
@@ -85,6 +81,9 @@
                 //this.get('#/profile', function() {
                 //
                 //});
+                //this.get('#user/:id/album/:name/photo/:id', function() {
+                //
+                //})
             });
             app.run('#/');
     });

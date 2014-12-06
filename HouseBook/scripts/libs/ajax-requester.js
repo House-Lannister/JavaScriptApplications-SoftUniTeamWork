@@ -31,11 +31,24 @@ define(function() {
             return makeRequest('DELETE', headers, url, undefined, success, error);
         }
 
+        function makeLoginRequest(headers, url, data, success, error) {
+            return $.ajax({
+                type: 'GET',
+                headers: headers,
+                url: url,
+                contentType: 'application/json',
+                data: data,
+                success: success,
+                error: error
+            })
+        }
+
         return {
             get: makeGetRequest,
             put: makePutRequest,
             post: makePostRequest,
-            remove: makeDeleteRequest
+            remove: makeDeleteRequest,
+            login: makeLoginRequest
         }
     }());
 });

@@ -143,7 +143,7 @@ define(['ajaxRequester'], function (ajaxRequester) {
 
         var Register = (function() {
             function Register() {
-                this.serviceUrl = ROOT_URL + 'users/';
+                this.serviceUrl = ROOT_URL + 'users';
             }
 
             Register.prototype.registerUser = function(newUserData, succes, error) {
@@ -159,7 +159,7 @@ define(['ajaxRequester'], function (ajaxRequester) {
             }
 
             LogIn.prototype.loginUser = function(loginData, success, error) {
-                return ajaxRequester.login(HEADERS, this.serviceUrl, loginData, success, error);
+                return ajaxRequester.get(HEADERS, this.serviceUrl, JSON.parse(loginData), success, error);
             };
 
             return LogIn

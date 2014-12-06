@@ -6,6 +6,7 @@
             'ajaxRequester': 'libs/ajax-requester',
             'sammy': 'libs/sammy.min',
             'mustache': 'libs/mustache',
+            'q': 'libs/q',
             'modelOperator': 'models/data-operator',
             'modelContainer': 'models/model-container',
             'viewContainer': 'views/view-container',
@@ -41,7 +42,7 @@
                     mainCtrl.registerUser();
                 }
                 function loginUser() {
-                    mainCtrl.logIn();
+                    mainCtrl.userLogin();
                 }
 
                 return {
@@ -56,8 +57,7 @@
 
 
 
-            //$('#register').on('click', appFunctions.registerUser);
-            //$('#logInButton').on('click', appFunctions.loginUser);
+
 
             var app = Sammy('#main', function() {
                 this.get('#/', function() {
@@ -80,6 +80,8 @@
                 //});
                 this.get('#/login', function() {
                     $('#main').html(Mustache.render(View.Log_In.responseText));
+                    $('#register').on('click', appFunctions.registerUser);
+                    $('#login').on('click', appFunctions.loginUser);
                 });
                 this.get('#/profile', function() {
                     $('#main').html(Mustache.render(View.Profile.responseText));

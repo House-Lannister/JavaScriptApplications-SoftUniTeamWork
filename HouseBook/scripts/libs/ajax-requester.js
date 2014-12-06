@@ -1,45 +1,50 @@
-define(function() {
-    var PARSE_APP_ID = 'bSQ7Oyfo5ODbslHZ1ZKcs7akRHeQZRdqmiUM26Fc',
-        PARSE_REST_API_KEY = 'lKFUeIuEfilTlWGVPjI9wXKLhITgdhbMgIlKKN7k';
+define(['q'], function(Q) {
 
     return (function() {
-        var makeRequest = function makeRequest(method, headers, url, data, success, error) {
-            return $.ajax({
+        var makeRequest = function makeRequest(method, headers, url, data) {
+            var defer = Q.defer();
+
+
+            $.ajax({
                 type: method,
                 headers: headers,
                 url: url,
                 contentType: 'application/json',
                 data: JSON.stringify(data),
-                success: success,
-                error: error
-            })
+                success: function(data) {
+                    defer.resolve(data);
+                },
+                error: function(error) {
+                    defer.reject(error);
+                }
+            });
+
+            return defer.promise;
         };
 
-        function makeGetRequest(headers, url, success, error) {
-            return makeRequest('GET', headers, url, undefined, success, error);
+        function makeGetRequest(headers, url) {
+            return makeRequest('GET', headers, url, undefined);
         }
 
-        function makePutRequest(headers, url, data, success, error) {
-            return makeRequest('PUT', headers, url, data, success, error);
+        function makePutRequest(headers, url, data) {
+            return makeRequest('PUT', headers, url, data);
         }
 
-        function makePostRequest(headers, url, data, success, error) {
-            return makeRequest('POST', headers, url, data, success, error);
+        function makePostRequest(headers, url, data) {
+            return makeRequest('POST', headers, url, data);
         }
 
-        function makeDeleteRequest(headers, url, success, error) {
-            return makeRequest('DELETE', headers, url, undefined, success, error);
+        function makeDeleteRequest(headers, url) {
+            return makeRequest('DELETE', headers, url, undefined);
         }
 
-        function makeLoginRequest(headers, url, data, success, error) {
+        function makeLoginRequest(headers, url, data) {
             return $.ajax({
                 type: 'GET',
                 headers: headers,
                 url: url,
                 contentType: 'application/json',
-                data: data,
-                success: success,
-                error: error
+                data: data
             })
         }
 

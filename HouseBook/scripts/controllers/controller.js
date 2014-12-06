@@ -13,20 +13,27 @@ define(['underscore', 'mustache', 'viewContainer'], function(_, Mustache, View) 
             };
 
             this.operator.login.loginUser(loginData)
-                .then(); //TODO
+                .then(
+                function(data) {
+                    localStorage['user'] = JSON.stringify(data);
+                }
+            );
         };
 
         Controller.prototype.registerUser = function() {
             var newUserData = {
-                username: $('#username').val(),
-                password: $('#password').val(),
-                email: $('#email').val()
+                username: $('#usernameChoice').val(),
+                password: $('#passwordChoice').val(),
+                email: $('#emailChoice').val()
             };
 
             this.operator.register.registerUser(newUserData)
                 .then(
                 function () {
-
+                    console.log('Registration successful!')
+                },
+                function(error) {
+                    errorFunctions.errorMessage(error);
                 }
             )
         };
@@ -151,24 +158,58 @@ define(['underscore', 'mustache', 'viewContainer'], function(_, Mustache, View) 
 
             switch (displayingMethod) {
                 case 'top three':
-                    this.operator.photo.getAll(
-                        successFunctions.displayTopImages, errorFunctions.errorMessage);
+                    this.operator.photo.getAll()
+                        .then(function(data) {
+                            successFunctions.displayTopImages(data)
+                        },
+                        function(error) {
+                            errorFunctions.errorMessage(error);
+                        }
+                );
                     break;
                 case 'random':
-                    this.operator.photo.getAll(
-                        successFunctions.displayRandomImages, errorFunctions.errorMessage);
+                    this.operator.photo.getAll()
+                        .then(
+                        function(data) {
+                            successFunctions.displayRandomImages(data);
+                        },
+                        function(error) {
+                            errorFunctions.errorMessage(error);
+                        }
+                    );
                     break;
                 case 'by rating':
-                    this.operator.photo.getAll(
-                        successFunctions.displayPhotosByRating, errorFunctions.errorMessage);
+                    this.operator.photo.getAll()
+                        .then(
+                        function(data) {
+                            successFunctions.displayPhotosByRating(data);
+                        },
+                        function(error) {
+                            errorFunctions.errorMessage(error);
+                        }
+                    );
                     break;
                 case 'by name':
-                    this.operator.photo.getAll(
-                        successFunctions.displayPhotosByName, errorFunctions.errorMessage);
+                    this.operator.photo.getAll()
+                        .then(
+                        function(data) {
+                            successFunctions.displayPhotosByName(data);
+                        },
+                        function(error) {
+                            errorFunctions.errorMessage(error);
+                        }
+                    );
                     break;
                 case 'by date':
-                    this.operator.photo.getAll(
-                        successFunctions.displayPhotosByDate, errorFunctions.errorMessage);
+                    this.operator.photo.getAll()
+                        .then(
+                        function(data) {
+                            successFunctions.displayPhotosByDate(data);
+                        },
+                        function(error) {
+                            errorFunctions.errorMessage(error);
+                        }
+                    );
                     break;
                 default:
                     console.log('Switch controller error! /displaying photos/');

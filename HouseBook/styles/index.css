@@ -221,4 +221,25 @@ body > footer > ul:hover {
 .sort-order {
   color: black; }
 
+.main-buttons {
+  display: inline-block;
+  font-weight: 600;
+  background-color: rgba(30, 125, 47, 0.7);
+  text-align: center;
+  border-radius: 5px;
+  border-bottom: 0 solid white;
+  transition: 0.2s;
+  color: papayawhip;
+}
+
+.log-container {
+  margin: 0 auto;
+  display: inline;
+
+}
+
+.userIN {
+  display: inline-block;
+  margin: 0 auto;
+}
 /*# sourceMappingURL=index.css.map */

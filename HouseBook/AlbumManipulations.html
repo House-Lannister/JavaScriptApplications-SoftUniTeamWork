@@ -17,8 +17,6 @@
                 <a href="#" id="upload"><li>Upload image</li></a>
                 <a href="#" id="upload"><li>Sign Up</li></a>
                 <a href="#" id="upload"><li>Sign Up</li></a>
-                <span class="glyphicon glyphicon-chevron-up"></span>
-                <span class="glyphicon glyphicon-chevron-down"></span>
             </ul>
         </nav>
     </header>
@@ -26,23 +24,42 @@
 
         <!--   ALBUMS   -->
 
-        <section class="user-account-albums" id="listOfAlbums">
-
-        </section>
+        <section class="user-account-albums" id="listOfAlbums"></section>
 
         <!--   ALBUMS/IMAGES/IMAGE/   -->
 
         <section class="clicked-image-container" id="photoViewer">
+
+            <div class="submit-in-this-album">
+                <!--TODO: When uploaded images is selected you can list the namesof the files here or display number of files-->
+                <span>Upload image/images</span>
+                <input type="file" id="submit-img-button" multiple="multiple" />
+            </div>
             <h2 class="image-title">SuperWoman-Megan Fox</h2>
             <article class="album1-image1-wrapper">
                 <div class="image-container">
                     <img class="last-pic-uploaded" align="left" src="images/superman.jpeg" />
                     <span class="glyphicon glyphicon-chevron-up"></span>
                     <span class="glyphicon glyphicon-chevron-down"></span>
-                    <p class="pictureInfo" >"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum</p>
+                    <p class="pictureInfo">"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum</p>
                     <span>Vote: </span>
                 </div>
             </article>
+            <div id="current-comments-container">
+                <div class="current-comment-1">
+                    <span>Name: Bai Georgi</span>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum</p>
+                </div>
+                <div class="current-comment-1">
+                    <span>Name: Bai Georgi</span>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum</p>
+                </div>
+            </div>
+            <div id="new-comment-container">
+                <span>Write new comment:</span>
+                <input id="submit-comment" type="button" value="Submit new comment" />
+                <textarea id="comment-field"></textarea>
+            </div>
         </section>
     </main>
     <footer>

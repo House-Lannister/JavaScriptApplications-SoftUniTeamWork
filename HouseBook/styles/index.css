@@ -13,6 +13,7 @@ body {
   body h1 {
     font-family: 'Luckiest Guy'; }
   body ul li {
+    line-height: 30px;
     display: inline-block;
     margin: 5px 2px;
     font-weight: 800;
@@ -24,17 +25,20 @@ body {
     border-bottom: 0 solid white;
     transition: 0.2s; }
     body ul li:hover {
-      height: 0;
+      height: 30px;
       border-bottom: 30px solid brown;
       text-decoration: underline;
       background-color: brown;
-      color: papayawhip; }
+      color: papayawhip;
+      background-color: rgba(165, 42, 42, 0.7);
+      box-shadow: black 1px 1px 8px; }
   body header, body footer {
-    padding: 7px;
+    padding: 15px 10px 5px 30px;
     width: 98%;
     margin: 5px 0;
     background-color: rgba(113, 97, 97, 0.7);
-    border-radius: 5px; }
+    border-radius: 5px;
+    box-shadow: black 1px 1px 8px; }
     body header .login, body footer .login {
       float: right; }
       body header .login #account, body header .login #pass, body footer .login #account, body footer .login #pass {
@@ -66,7 +70,8 @@ body {
     width: 98%;
     border-radius: 5px;
     background-color: rgba(113, 97, 97, 0.7);
-    padding: 20px 5px 10px 10px; }
+    padding: 20px 5px 10px 10px;
+    box-shadow: black 1px 1px 8px; }
     body main section .images-container article {
       display: inline-block;
       width: 400px;
@@ -94,21 +99,21 @@ body {
       body main section .images-container article img {
         width: 400px;
         height: 300px; }
-    body main form, body main h2 {
+    body main form, body main h2, body main h3 {
       border-bottom: 2px solid white;
       width: 340px;
       transition: 0.2s; }
-      body main form input, body main h2 input {
+      body main form input, body main h2 input, body main h3 input {
         border-radius: 5px;
         width: 300px;
         border: 0;
         padding: 10px;
         margin: 5px auto;
         text-align: center; }
-    body main h2:hover {
+    body main h2:hover, body main h3:hover {
       width: 80%; }
 
-.register {
+#register {
   background-color: rgba(30, 125, 47, 0.7);
   color: papayawhip;
   font-weight: 700;
@@ -221,25 +226,93 @@ body > footer > ul:hover {
 .sort-order {
   color: black; }
 
-.main-buttons {
-  display: inline-block;
-  font-weight: 600;
+#current-comments-container, #new-comment-container {
   background-color: rgba(30, 125, 47, 0.7);
+  margin: 5px;
+  padding: 10px;
+  border-radius: 5px;
+  display: inline-block;
+  max-width: 500px;
+  min-width: 48%;
+  vertical-align: top; }
+  #current-comments-container input, #new-comment-container input {
+    color: black;
+    float: right;
+    margin-bottom: 5px; }
+  #current-comments-container textarea, #new-comment-container textarea {
+    width: 100%;
+    min-height: 200px;
+    background-color: rgba(30, 125, 47, 0.7);
+    border-color: brown;
+    border-radius: 5px;
+    transition: 0.2s; }
+    #current-comments-container textarea:focus, #new-comment-container textarea:focus {
+      border-color: rgba(30, 125, 47, 0);
+      background-color: rgba(165, 42, 42, 0.7);
+      outline: none;
+      box-shadow: black 1px 1px 8px; }
+  #current-comments-container span, #new-comment-container span {
+    font-size: 20px; }
+
+.submit-in-this-album {
+  overflow: hidden;
+  position: relative;
+  display: inline-block;
+  margin: 5px 2px;
+  font-weight: 800;
+  background-color: rgba(30, 125, 47, 0.7);
+  width: 200px;
+  height: 30px;
   text-align: center;
   border-radius: 5px;
   border-bottom: 0 solid white;
-  transition: 0.2s;
-  color: papayawhip;
-}
+  transition: 0.2s; }
+  .submit-in-this-album:hover {
+    cursor: pointer;
+    height: 30px;
+    text-decoration: underline;
+    color: papayawhip;
+    background-color: brown;
+    box-shadow: black 1px 1px 8px; }
+  .submit-in-this-album span {
+    line-height: 30px; }
+  .submit-in-this-album input[type=file] {
+    cursor: pointer;
+    display: block;
+    min-height: 100%;
+    min-width: 100%;
+    opacity: 0;
+    position: absolute;
+    text-align: right;
+    left: -193px;
+    top: 0;
+    font-size: 20px; }
 
-.log-container {
-  margin: 0 auto;
-  display: inline;
-
-}
-
-.userIN {
+#submit-comment {
+  border: none;
+  overflow: hidden;
+  position: relative;
   display: inline-block;
-  margin: 0 auto;
-}
+  margin: 5px 2px;
+  font-weight: 800;
+  background-color: rgba(30, 125, 47, 0);
+  width: 200px;
+  height: 30px;
+  text-align: center;
+  border-radius: 5px;
+  border-bottom: 0 solid white;
+  color: papayawhip !important;
+  transition: 0.2s; }
+  #submit-comment:hover {
+    cursor: pointer;
+    height: 30px;
+    text-decoration: underline;
+    color: papayawhip;
+    background-color: rgba(165, 42, 42, 0.7);
+    box-shadow: black 1px 1px 8px; }
+  #submit-comment:active {
+    background-color: black; }
+  #submit-comment:focus {
+    outline: none; }
+
 /*# sourceMappingURL=index.css.map */

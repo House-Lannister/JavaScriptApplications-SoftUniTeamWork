@@ -19,6 +19,7 @@ body {
     }
 
     ul li {
+        line-height: 30px;
         display: inline-block;
         margin: 5px 2px;
         font-weight: 800;
@@ -31,20 +32,23 @@ body {
         transition: 0.2s;
 
         &:hover {
-            height:0;
+            height: 30px;
             border-bottom: 30px solid brown;
             text-decoration: underline;
             background-color: brown;
             color: papayawhip;
+            background-color: rgba(165, 42, 42, 0.70);
+            box-shadow: black 1px 1px 8px;
         }
     }
 
     header, footer {
-        padding: 7px;
+        padding: 15px 10px 5px 30px;
         width: 98%;
         margin: 5px 0;
         background-color: rgba(113, 97, 97, 0.70);
         border-radius: 5px;
+        box-shadow: black 1px 1px 8px;
 
         .login {
             float: right;
@@ -89,6 +93,7 @@ body {
         border-radius: 5px;
         background-color: rgba(113, 97, 97, 0.70);
         padding: 20px 5px 10px 10px;
+        box-shadow: black 1px 1px 8px;
 
         section {
             .images-container {
@@ -131,7 +136,7 @@ body {
             }
         }
 
-        form, h2 {
+        form, h2, h3 {
             border-bottom: 2px solid white;
             width: 340px;
             transition: 0.2s;
@@ -146,7 +151,7 @@ body {
             }
         }
 
-        h2:hover {
+        h2:hover, h3:hover {
             width: 80%;
         }
     }
@@ -224,6 +229,7 @@ body > footer > ul {
             height: 500px;
             overflow: hidden;
             transition: 0.2s;
+
 
             &:hover {
                 background-color: rgba(30, 125, 47, 0.70);
@@ -307,4 +313,116 @@ body > footer > ul {
 
 .sort-order {
     color: black;
+}
+
+#current-comments-container, #new-comment-container {
+    background-color: rgba(30, 125, 47, 0.70);
+    margin: 5px;
+    padding: 10px;
+    border-radius: 5px;
+    display: inline-block;
+    max-width: 500px;
+    min-width: 48%;
+    vertical-align: top;
+
+    input {
+        color: black;
+        float: right;
+        margin-bottom: 5px;
+    }
+
+    textarea {
+        width: 100%;
+        min-height: 200px;
+        background-color: rgba(30, 125, 47, 0.70);
+        border-color: brown;
+        border-radius: 5px;
+        transition: 0.2s;
+
+        &:focus {
+            border-color: rgba(30, 125, 47, 0);
+            background-color: rgba(165, 42, 42, 0.70);
+            outline: none;
+            box-shadow: black 1px 1px 8px;
+        }
+    }
+
+    span {
+        font-size: 20px;
+    }
+}
+
+.submit-in-this-album {
+    overflow: hidden;
+    position: relative;
+    display: inline-block;
+    margin: 5px 2px;
+    font-weight: 800;
+    background-color: rgba(30, 125, 47, 0.70);
+    width: 200px;
+    height: 30px;
+    text-align: center;
+    border-radius: 5px;
+    border-bottom: 0 solid white;
+    transition: 0.2s;
+
+    &:hover {
+        cursor: pointer;
+        height: 30px;
+        text-decoration: underline;
+        color: papayawhip;
+        background-color: rgb(165, 42, 42);
+        box-shadow: black 1px 1px 8px;
+    }
+
+    span {
+        line-height: 30px;
+    }
+
+    input[type=file] {
+        cursor: pointer;
+        display: block;
+        min-height: 100%;
+        min-width: 100%;
+        opacity: 0;
+        position: absolute;
+        text-align: right;
+        left: -193px;
+        top: 0;
+        font-size: 20px;
+    }
+}
+
+#submit-comment {
+    border: none;
+    overflow: hidden;
+    position: relative;
+    display: inline-block;
+    margin: 5px 2px;
+    font-weight: 800;
+    background-color: rgba(30, 125, 47, 0);
+    width: 200px;
+    height: 30px;
+    text-align: center;
+    border-radius: 5px;
+    border-bottom: 0 solid white;
+    color: papayawhip !important;
+    transition: 0.2s;
+
+    &:hover {
+        cursor: pointer;
+        height: 30px;
+        text-decoration: underline;
+        color: papayawhip ;
+        background-color: rgba(165, 42, 42, 0.70);
+        box-shadow: black 1px 1px 8px;
+    }
+
+    &:active {
+        background-color: black;
+    }
+
+    &:focus {
+        outline: none;
+    }
 }

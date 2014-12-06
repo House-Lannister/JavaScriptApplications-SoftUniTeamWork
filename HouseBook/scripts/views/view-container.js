@@ -12,7 +12,9 @@ define(function(){
 
         var contactsView;
 
-        var profileView;
+        var profileView = $.get('./templates/profile.html',function(html){
+            return html;
+        });
 
         var logInView;
 

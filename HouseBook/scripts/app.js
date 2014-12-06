@@ -79,11 +79,11 @@
                 //    $('#main').html(Mustache.render(View.Contacts));
                 //});
                 //this.get('#/login', function() {
-                //    $('#main').html(Mustache.render(View.Log_In));
+                //    $('#main').html(Mustache.render(View.Log_In.responseText));
                 //});
-                //this.get('#/profile', function() {
-                //
-                //});
+                this.get('#/profile', function() {
+                    $('#main').html(Mustache.render(View.Profile.responseText));
+                });
                 //this.get('#user/:id/album/:name/photo/:id', function() {
                 //
                 //})

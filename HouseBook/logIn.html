@@ -1,68 +1,22 @@
-﻿<!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml">
-<head>
-    <title>Login</title>
-    <link href="styles/index.css" rel="stylesheet" />
+﻿<section id="log-container">
+    <h2>Register/Log in</h2>
+    <section id="registrationForm" class="userIN">
 
-</head>
-<body>
-    <h1>Photo gallery's site Example</h1>
-    <header>
-        <div class="login">
-            <span>Log In:</span>
-            <input id="account" type="text" placeholder="Account name" />
-            <input id="pass" type="password" placeholder="Password" />
-            <input id="log-on" src="#" type="submit" value="Log In" />
-            <input id="log-in" src="#" type="button" value="Sign Up" />
-        </div>
-        <nav>
-            <ul>
-                <a href="index.html" id="home"><li>Home</li></a>
-                <a href="#" id="chart"><li>Top5 Gallery</li></a>
-                <a href="#" id="contacts"><li>Contacts</li></a>
-                <a href="#" id="upload"><li>Upload images</li></a>
-            </ul>
-        </nav>
-    </header>
-    <main>
-        <section>
-            <h2>Sign Up:</h2>
-            <form class="login">
-                <input id="username" type="text" placeholder="Account name" />
-                <input id="password" type="password" placeholder="Password" />
-                <input id="pass-confirm" type="password" placeholder="Confirm Password" />
-                <input id="email" type="email" placeholder="Email" />
-                <input id="register" src="#" type="button" value="Register" />
-            </form>
-        </section>
-    </main>
-    <footer>
-        <ul>
-            <li>
-                <!--<img src="images/wheel.png" />-->
-            </li>
-            <li>
+        <form class="login">
+            <input id="usernameChoice" type="text" placeholder="Account name" />
+            <input id="passwordChoice" type="password" placeholder="Password" />
+            <input id="emailChoice" type="email" placeholder="Email" />
+            <input id="register" src="#" type="button" value="Register" class="main-buttons" />
+        </form>
+    </section>
 
-            </li>
-            <li>
-                <!--Links:-->
-                <ul class="links">
-                    <li>
-                        <!--<a href="https://softuni.bg/">SoftUni</a>-->
-                    </li>
-                    <li>
-                        <!--<a href="http://zamunda.net/catalogue.php">Zamunda</a>-->
-                    </li>
-                    <li>
-                        <!--<a href="http://wall.alphacoders.com/">AbyssWallpaper</a>-->
-                    </li>
-                </ul>
-            </li>
-        </ul>
-    </footer>
+    <section id="loginForm" class="userIN">
+        <form class="login">
+            <input id="username" type="text" placeholder="Account name" />
+            <input id="password" type="password" placeholder="Password" />
+            <input id="login" src="#" type="button" value="Log In" class="main-buttons" />
+        </form>
+    </section>
 
-
-    <!--Type your Script reletions here-->
-    <script src="scripts/libs/require.js" data-main="scripts/app"></script>
-</body>
-</html>
+	
+</section>

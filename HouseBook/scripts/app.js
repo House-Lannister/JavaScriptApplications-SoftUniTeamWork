@@ -54,7 +54,7 @@
             var databaseOperator = dataOperator.get();
             var mainCtrl = controller.get(databaseOperator);
 
-            mainCtrl.displayAlbums('#listOfAlbums');
+
 
             //$('#register').on('click', appFunctions.registerUser);
             //$('#logInButton').on('click', appFunctions.loginUser);
@@ -69,6 +69,7 @@
 
                 this.get('#/albums', function() {
                     $('#main').html(Mustache.render(View.Albums.responseText));
+                    mainCtrl.displayAlbums('#listOfAlbums');
                 });
 
                 //this.get('#/upload', function() {

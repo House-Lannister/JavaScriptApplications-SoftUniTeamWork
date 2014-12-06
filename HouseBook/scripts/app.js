@@ -78,9 +78,9 @@
                 //this.get('#/contacts', function() {
                 //    $('#main').html(Mustache.render(View.Contacts));
                 //});
-                //this.get('#/login', function() {
-                //    $('#main').html(Mustache.render(View.Log_In.responseText));
-                //});
+                this.get('#/login', function() {
+                    $('#main').html(Mustache.render(View.Log_In.responseText));
+                });
                 this.get('#/profile', function() {
                     $('#main').html(Mustache.render(View.Profile.responseText));
                 });

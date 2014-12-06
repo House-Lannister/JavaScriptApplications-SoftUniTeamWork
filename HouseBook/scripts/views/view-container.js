@@ -16,7 +16,9 @@ define(function(){
             return html;
         });
 
-        var logInView;
+        var logInView = $.get('./templates/login.html',function(html){
+            return html;
+        });
 
         var listPhoto = $.get('./templates/listPhoto.html',function(html){
             return html;

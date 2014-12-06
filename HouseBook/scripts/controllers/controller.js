@@ -24,7 +24,11 @@ define(['underscore', 'mustache', 'viewContainer'], function(_, Mustache, View) 
             };
 
             this.operator.register.registerUser(newUserData)
-                .then(); //TODO
+                .then(
+                function () {
+
+                }
+            )
         };
 
         Controller.prototype.displayAlbums = function(selector) {

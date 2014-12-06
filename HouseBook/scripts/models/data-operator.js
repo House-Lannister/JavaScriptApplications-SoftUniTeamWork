@@ -9,6 +9,7 @@ define(['modelContainer'],
             this.comment = new Model.Comment();
             this.user = new Model.User();
             this.login = new Model.LogIn();
+            this.register = new Model.Register();
         }
 
         return {

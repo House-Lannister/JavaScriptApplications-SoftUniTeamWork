@@ -1,32 +1,12 @@
 define(function(){
     return (function() {
-        var homeView = {
-            html: '<section id="home">' +
-        '<nav class="filter">' +
-        '<div class="sort-order">' +
-        '<span>Filter by: </span>' +
-        '<select id="filter">' +
-        '<option disabled="disabled" selected="selected" hidden="hidden">-sort method-</option>' +
-        '<option value="rating">Rating</option>' +
-        '<option value="name">Name</option>' +
-        '<option value="date">Date</option>' +
-        '</select>' +
-        '</div>' +
-        '</nav>' +
-        '<section class="top-3-imgs">' +
-        '<h2>Top Photos:</h2>' +
-        '<div class="images-container" id="topImages">' +
-        '</div>' +
-        '</section>' +
-        '<section class="random-imgs">' +
-        '<div class="images-container" id="allImages">' +
-        '<h2>Lucky Proposals:</h2>' +
-        '</div>' +
-        '</section>' +
-        '</section>'
-        };
+        var homeView = $.get('./templates/home.html',function(html){
+            return html;
+        });
 
-        var albumsView;
+        var albumsView = $.get('./templates/albums.html',function(html){
+            return html;
+        });
 
         var uploadView;
 
@@ -67,7 +47,7 @@ define(function(){
         };
 
         return {
-            Home: homeView.html,
+            Home: homeView,
             Albums: albumsView,
             Upload: uploadView,
             Contacts: contactsView,

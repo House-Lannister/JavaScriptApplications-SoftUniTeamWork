@@ -54,21 +54,23 @@
             var databaseOperator = dataOperator.get();
             var mainCtrl = controller.get(databaseOperator);
 
-            mainCtrl.displayAlbums('#listOfAlbums')
+            mainCtrl.displayAlbums('#listOfAlbums');
 
             //$('#register').on('click', appFunctions.registerUser);
             //$('#logInButton').on('click', appFunctions.loginUser);
 
             var app = Sammy('#main', function() {
                 this.get('#/', function() {
-                    $('#main').html(Mustache.render(View.Home));
+                    $('#main').html(Mustache.render(View.Home.responseText));
                     $('#filter').on('change', appFunctions.sortAllPhotos);
                     mainCtrl.displayPhotos('#allImages', Enum.displayPhotos.RANDOMLY);
                     mainCtrl.displayPhotos('#topImages', Enum.displayPhotos.TOP_THREE);
                 });
-                //this.get('#/albums', function() {
-                //    $('#main').html(Mustache.render(View.Albums));
-                //});
+
+                this.get('#/albums', function() {
+                    $('#main').html(Mustache.render(View.Albums.responseText));
+                });
+
                 //this.get('#/upload', function() {
                 //    $('#main').html(Mustache.render(View.Upload));
                 //});

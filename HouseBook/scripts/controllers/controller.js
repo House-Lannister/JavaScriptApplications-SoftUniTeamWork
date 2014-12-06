@@ -34,7 +34,7 @@ define(['underscore', 'mustache', 'viewContainer'], function(_, Mustache, View) 
                 function(data) {
                     var userData = data.results;
                     for (var user in userData) {
-                        $(selector).append(Mustache.render(View.albumOwner, userData[user]));
+                        $(selector).append(Mustache.render(View.albumOwner.responseText, userData[user]));
                         _this.operator.album.getByUser(userData[user].objectId)
                             .then(
                             function(data) {
@@ -67,7 +67,7 @@ define(['underscore', 'mustache', 'viewContainer'], function(_, Mustache, View) 
                                             errorFunctions.errorMessage(error);
                                         }
                                     );
-                                    $(selector).append(Mustache.render(View.listAlbums, albums[album]));
+                                    $(selector).append(Mustache.render(View.listAlbums.responseText, albums[album]));
                                 }
                             },
                             function(error) {
@@ -140,7 +140,7 @@ define(['underscore', 'mustache', 'viewContainer'], function(_, Mustache, View) 
 
                 function displayPhotos(extractedData) {
                     for (var obj in extractedData) {
-                        $(selector).append(Mustache.render(View.listPhoto, extractedData[obj]));
+                        $(selector).append(Mustache.render(View.listPhoto.responseText, extractedData[obj]));
                     }
                 }
             }());

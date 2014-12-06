@@ -4,7 +4,6 @@ define(['q'], function(Q) {
         var makeRequest = function makeRequest(method, headers, url, data) {
             var defer = Q.defer();
 
-
             $.ajax({
                 type: method,
                 headers: headers,

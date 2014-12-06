@@ -15,20 +15,20 @@ define(['ajaxRequester'], function (ajaxRequester) {
                 this.serviceUrl = EXTENDED_ROOT_URL + 'Category/';
             }
 
-            Category.prototype.getAll = function (success, error) {
-                return ajaxRequester.get(HEADERS, this.serviceUrl, success, error);
+            Category.prototype.getAll = function () {
+                return ajaxRequester.get(HEADERS, this.serviceUrl);
             };
 
-            Category.prototype.add = function (newData, success, error) {
-                return ajaxRequester.post(HEADERS, this.serviceUrl, newData, success, error);
+            Category.prototype.add = function (newData) {
+                return ajaxRequester.post(HEADERS, this.serviceUrl, newData);
             };
 
-            Category.prototype.put = function (dataChange, success, error) {
-                return ajaxRequester.put(HEADERS, this.serviceUrl, dataChange, success, error);
+            Category.prototype.put = function (dataChange) {
+                return ajaxRequester.put(HEADERS, this.serviceUrl, dataChange);
             };
 
-            Category.prototype.remove = function (categoryId, success, error) {
-                return ajaxRequester.remove(HEADERS, this.serviceUrl + categoryId, success, error);
+            Category.prototype.remove = function (categoryId) {
+                return ajaxRequester.remove(HEADERS, this.serviceUrl + categoryId);
             };
 
             return Category;
@@ -41,24 +41,24 @@ define(['ajaxRequester'], function (ajaxRequester) {
                     '?where={"user":{"__type":"Pointer","className":"_User","objectId":"';
             }
 
-            Album.prototype.getAll = function(success, error) {
-                return ajaxRequester.get(HEADERS, this.serviceUrl, success, error);
+            Album.prototype.getAll = function() {
+                return ajaxRequester.get(HEADERS, this.serviceUrl);
             };
 
-            Album.prototype.add = function(newData, success, error) {
-                return ajaxRequester.post(HEADERS, this.serviceUrl, newData, success, error);
+            Album.prototype.add = function(newData) {
+                return ajaxRequester.post(HEADERS, this.serviceUrl, newData);
             };
 
-            Album.prototype.put = function(albumId, dataChange, success, error) {
-                return ajaxRequester.put(HEADERS, this.serviceUrl, dataChange, success, error);
+            Album.prototype.put = function(albumId, dataChange) {
+                return ajaxRequester.put(HEADERS, this.serviceUrl, dataChange);
             };
 
-            Album.prototype.remove = function(categoryId, success, error) {
-                return ajaxRequester.remove(HEADERS, this.serviceUrl + categoryId, success, error);
+            Album.prototype.remove = function(categoryId) {
+                return ajaxRequester.remove(HEADERS, this.serviceUrl + categoryId);
             };
 
-            Album.prototype.getByUser = function(userId, success, error) {
-                return ajaxRequester.get(HEADERS, this.urlByUser + userId + URL_SUFFIX, success, error)
+            Album.prototype.getByUser = function(userId) {
+                return ajaxRequester.get(HEADERS, this.urlByUser + userId + URL_SUFFIX)
             };
             return Album;
         }());
@@ -70,24 +70,24 @@ define(['ajaxRequester'], function (ajaxRequester) {
                 '?where={"album":{"__type":"Pointer","className":"Album","objectId":"';
             }
 
-            Photo.prototype.getAll = function(success, error) {
-                return ajaxRequester.get(HEADERS, this.serviceUrl, success, error);
+            Photo.prototype.getAll = function() {
+                return ajaxRequester.get(HEADERS, this.serviceUrl);
             };
 
-            Photo.prototype.add = function(newData, success, error) {
-                return ajaxRequester.post(HEADERS, this.serviceUrl, newData, success, error);
+            Photo.prototype.add = function(newData) {
+                return ajaxRequester.post(HEADERS, this.serviceUrl, newData);
             };
 
-            Photo.prototype.put = function(dataChange, success, error) {
-                return ajaxRequester.put(HEADERS, this.serviceUrl, dataChange, success, error);
+            Photo.prototype.put = function(dataChange) {
+                return ajaxRequester.put(HEADERS, this.serviceUrl, dataChange);
             };
 
-            Photo.prototype.remove = function(categoryId, success, error) {
-                return ajaxRequester.remove(HEADERS, this.serviceUrl + categoryId, success, error);
+            Photo.prototype.remove = function(categoryId) {
+                return ajaxRequester.remove(HEADERS, this.serviceUrl + categoryId);
             };
 
-            Photo.prototype.getByAlbum = function(albumId, success, error) {
-                return ajaxRequester.get(HEADERS, this.urlByAlbum + albumId + URL_SUFFIX, success, error);
+            Photo.prototype.getByAlbum = function(albumId) {
+                return ajaxRequester.get(HEADERS, this.urlByAlbum + albumId + URL_SUFFIX);
             };
 
             return Photo;
@@ -98,20 +98,20 @@ define(['ajaxRequester'], function (ajaxRequester) {
                 this.serviceUrl = EXTENDED_ROOT_URL + 'Comment/';
             }
 
-            Comment.prototype.getAll = function (success, error) {
-                return ajaxRequester.get(HEADERS, this.serviceUrl, success, error);
+            Comment.prototype.getAll = function () {
+                return ajaxRequester.get(HEADERS, this.serviceUrl);
             };
 
-            Comment.prototype.add = function (newData, success, error) {
-                return ajaxRequester.post(HEADERS, this.serviceUrl, newData, success, error);
+            Comment.prototype.add = function (newData) {
+                return ajaxRequester.post(HEADERS, this.serviceUrl, newData);
             };
 
-            Comment.prototype.put = function (dataChange, success, error) {
-                return ajaxRequester.put(HEADERS, this.serviceUrl, dataChange, success, error);
+            Comment.prototype.put = function (dataChange) {
+                return ajaxRequester.put(HEADERS, this.serviceUrl, dataChange);
             };
 
-            Comment.prototype.remove = function (categoryId, success, error) {
-                return ajaxRequester.remove(HEADERS, this.serviceUrl + categoryId, success, error);
+            Comment.prototype.remove = function (categoryId) {
+                return ajaxRequester.remove(HEADERS, this.serviceUrl + categoryId);
             };
 
             return Comment;
@@ -122,20 +122,20 @@ define(['ajaxRequester'], function (ajaxRequester) {
                 this.serviceUrl = EXTENDED_ROOT_URL + '_User/';
             }
 
-            User.prototype.getAll = function(success, error) {
-                return ajaxRequester.get(HEADERS, this.serviceUrl, success, error);
+            User.prototype.getAll = function() {
+                return ajaxRequester.get(HEADERS, this.serviceUrl);
             };
 
-            User.prototype.add = function(newData, success, error) {
-                return ajaxRequester.post(HEADERS, this.serviceUrl, newData, success, error);
+            User.prototype.add = function(newData) {
+                return ajaxRequester.post(HEADERS, this.serviceUrl, newData);
             };
 
-            User.prototype.put = function(dataChange, success, error) {
-                return ajaxRequester.put(HEADERS, this.serviceUrl, dataChange, success, error);
+            User.prototype.put = function(dataChange) {
+                return ajaxRequester.put(HEADERS, this.serviceUrl, dataChange);
             };
 
-            User.prototype.remove = function(categoryId, success, error) {
-                return ajaxRequester.remove(HEADERS, this.serviceUrl + categoryId, success, error);
+            User.prototype.remove = function(categoryId) {
+                return ajaxRequester.remove(HEADERS, this.serviceUrl + categoryId);
             };
 
             return User;
@@ -146,8 +146,8 @@ define(['ajaxRequester'], function (ajaxRequester) {
                 this.serviceUrl = ROOT_URL + 'users';
             }
 
-            Register.prototype.registerUser = function(newUserData, succes, error) {
-                ajaxRequester.post(HEADERS, this.serviceUrl, newUserData, succes, error);
+            Register.prototype.registerUser = function(newUserData) {
+                return ajaxRequester.post(HEADERS, this.serviceUrl, newUserData);
             };
 
             return Register;
@@ -158,8 +158,8 @@ define(['ajaxRequester'], function (ajaxRequester) {
                 this.serviceUrl = ROOT_URL + 'login/';
             }
 
-            LogIn.prototype.loginUser = function(loginData, success, error) {
-                return ajaxRequester.get(HEADERS, this.serviceUrl, JSON.parse(loginData), success, error);
+            LogIn.prototype.loginUser = function(loginData) {
+                return ajaxRequester.get(HEADERS, this.serviceUrl, JSON.parse(loginData));
             };
 
             return LogIn

@@ -38,13 +38,23 @@ define(['q'], function(Q) {
         }
 
         function makeLoginRequest(headers, url, data) {
+            var deferLog = Q.defer();
+
             return $.ajax({
                 type: 'GET',
                 headers: headers,
                 url: url,
                 contentType: 'application/json',
-                data: data
-            })
+                data: data,
+                success: function(data) {
+                    deferLog.resolve(data);
+                },
+                error: function(error) {
+                    deferLog.reject(error);
+                }
+            });
+
+            return deferLog.promise;
         }
 
         return {

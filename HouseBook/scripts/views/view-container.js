@@ -1,10 +1,10 @@
 define(function(){
     return (function() {
-        var homeView = $.get('./templates/home.html',function(html){
+        var homeView = $.get('./templates/home.html', function(html){
             return html;
         });
 
-        var albumsView = $.get('./templates/albums.html',function(html){
+        var albumsView = $.get('./templates/albums.html', function(html){
             return html;
         });
 
@@ -12,29 +12,33 @@ define(function(){
 
         var contactsView;
 
-        var profileView = $.get('./templates/profile.html',function(html){
+        var profileView = $.get('./templates/profile.html', function(html){
             return html;
         });
 
-        var logInView = $.get('./templates/login.html',function(html){
+        var logInView = $.get('./templates/login.html', function(html){
             return html;
         });
 
-        var listPhoto = $.get('./templates/listPhoto.html',function(html){
+        var listPhoto = $.get('./templates/listPhoto.html', function(html){
             return html;
         });
 
-        var albumOwner = $.get('./templates/albumOwner.html',function(html){
+        var albumOwner = $.get('./templates/albumOwner.html', function(html){
             return html;
         });
 
-        var listUserAlbums = $.get('./templates/listOfAlbums.html',function(html){
+        var listUserAlbums = $.get('./templates/listOfAlbums.html', function(html){
             return html;
         });
 
-        var photoViewer = {
+        var photoViewer = $.get('./templates/photoViewer.html', function(html){
+            return html;
+        });
 
-        };
+        var Photo = $.get('./templates/photo.html', function(html){
+            return html;
+        });
 
         return {
             Home: homeView,
@@ -46,7 +50,8 @@ define(function(){
             listPhoto: listPhoto,
             listAlbums: listUserAlbums,
             albumOwner: albumOwner,
-            photoViewer: photoViewer
+            photoViewer: photoViewer,
+            Photo: Photo
         }
     }());
 });

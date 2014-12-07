@@ -55,9 +55,15 @@
             var databaseOperator = dataOperator.get();
             var mainCtrl = controller.get(databaseOperator);
 
-
-
-
+            if(localStorage.user) {
+                var user = JSON.parse(localStorage['user']);
+                $('#user').text(user.username);
+                $('#userTab').show();
+                $('#logInTab').hide();
+            } else {
+                $('#userTab').hide();
+                $('#logInTab').show();
+            }
 
             var app = Sammy('#main', function() {
                 this.get('#/', function() {
@@ -72,19 +78,30 @@
                     mainCtrl.displayAlbums('#listOfAlbums');
                 });
 
-                //this.get('#/upload', function() {
-                //    $('#main').html(Mustache.render(View.Upload));
-                //});
+                this.get('#/photos', function() {
+                    $('#main').html(Mustache.render(View.photoViewer.responseText));
+                    mainCtrl.displayAlbumPhotoViewer('#photoViewer', 'x9qBGMX7mB');
+                    $('#rightButton').on('click', function() {
+                        mainCtrl.displayAlbumPhotoViewer('#photoViewer')
+                    });
+                });
                 //this.get('#/contacts', function() {
                 //    $('#main').html(Mustache.render(View.Contacts));
                 //});
                 this.get('#/login', function() {
+                    localStorage.removeItem(['user']);
+                    $('#userTab').hide();
+                    $('#logInTab').show();
                     $('#main').html(Mustache.render(View.Log_In.responseText));
                     $('#register').on('click', appFunctions.registerUser);
                     $('#login').on('click', appFunctions.loginUser);
                 });
                 this.get('#/profile', function() {
                     $('#main').html(Mustache.render(View.Profile.responseText));
+                    var user = JSON.parse(localStorage['user']);
+                    $('#user').text(user.username);
+                    $('#userTab').show();
+                    $('#logInTab').hide();
                 });
                 //this.get('#user/:id/album/:name/photo/:id', function() {
                 //

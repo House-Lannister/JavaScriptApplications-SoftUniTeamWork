@@ -1,0 +1,28 @@
+<h2 class="image-title">{{name}}</h2>
+<article class="album1-image1-wrapper">
+    <div class="image-container">
+        <img class="last-pic-uploaded" align="left" src="{{file.url}}" />
+        <span class="glyphicon glyphicon-chevron-up"></span>
+        <span class="glyphicon glyphicon-chevron-down" id="nextPhoto"></span>
+        <p class="pictureInfo">{{info}}</p>
+        <span>Vote: </span>
+        <span>{{votes}}</span>
+    </div>
+    <a class="submit-comment" id="leftButton"> << </a>
+    <a class="submit-comment" id="rightButton"> >> </a>
+</article>
+<div id="current-comments-container">
+    <div class="current-comment-1">
+        <span>Name: Bai Georgi</span>
+        <p>Lorem ipsum dolor sit amet!</p>
+    </div>
+    <div class="current-comment-1">
+        <span>Name: Bai Georgi</span>
+        <p>Lorem ipsum dolor sit amet!</p>
+    </div>
+</div>
+<div id="new-comment-container">
+    <span>Write new comment:</span>
+    <input class="submit-comment" type="button" value="Submit new comment" />
+    <textarea id="comment-field"></textarea>
+</div>

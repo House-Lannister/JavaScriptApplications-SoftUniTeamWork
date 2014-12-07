@@ -8,16 +8,27 @@ define(['underscore', 'mustache', 'viewContainer'], function(_, Mustache, View) 
 
         Controller.prototype.userLogin = function() {
             var loginData = {
-                username: $('#logInName').val(),
-                password: $('#logInPass').val()
+                username: $('#username').val(),
+                password: $('#password').val()
             };
 
             this.operator.login.loginUser(loginData)
                 .then(
                 function(data) {
                     localStorage['user'] = JSON.stringify(data);
+                    $('#user').text(loginData.username);
+                    $('#userTab').show();
+                },
+                function(error) {
+                    $('#main').text('Invalid username or password.');
+                    console.log(error);
                 }
-            );
+            ).then(
+                function() {
+
+                    $('#logInTab').hide();
+                }
+            )
         };
 
         Controller.prototype.registerUser = function() {
@@ -30,7 +41,7 @@ define(['underscore', 'mustache', 'viewContainer'], function(_, Mustache, View) 
             this.operator.register.registerUser(newUserData)
                 .then(
                 function () {
-                    console.log('Registration successful!')
+                    $('#main').html('Successful registration! Please log in now to create your albums!')
                 },
                 function(error) {
                     errorFunctions.errorMessage(error);
@@ -40,69 +51,80 @@ define(['underscore', 'mustache', 'viewContainer'], function(_, Mustache, View) 
 
         Controller.prototype.displayAlbums = function(selector) {
             var _this = this;
+
+            function setAlbumCoverPhoto(resultUrl, resultId) {
+                _this.operator.album.put(resultUrl, resultId);
+            }
+            function getAlbum(albumId) {
+                _this.operator.photo.getByAlbum(albumId)
+                    .then(
+                    function (dataPhoto) {
+                        var photo = dataPhoto.results[0];
+                        var result = {
+                            url: photo.file.url,
+                            objectId: photo.album.objectId
+                        };
+                        setAlbumCoverPhoto(result.url, result.objectId);
+                    },
+                    function (error) {
+                        errorFunctions.errorMessage(error);
+                    }
+                )
+            }
+            function printUserAlbums(userId) {
+                _this.operator.album.getByUser(userId)
+                    .then(
+                    function (newData) {
+                        var albums = newData.results;
+                        for (var album = 0; album < albums.length; album++) {
+                            var albumId = albums[album].objectId;
+                            getAlbum(albumId);
+                            $('#' + userId).append(Mustache.render(View.listAlbums.responseText, albums[album]));
+                        }
+                    },
+                    function (error) {
+                        errorFunctions.errorMessage(error);
+                    }
+                )
+            }
+
             this.operator.user.getAll()
                 .then(
                 function(data) {
                     var userData = data.results;
-                    for (var user in userData) {
-                        $(selector).append(Mustache.render(View.albumOwner.responseText, userData[user]));
-                        _this.operator.album.getByUser(userData[user].objectId)
-                            .then(
-                            function(data) {
-                                var albums = data.results;
-
-                                for (var album in albums) {
-                                    var albumId = albums[album].objectId;
-
-                                    _this.operator.photo.getByAlbum(albumId)
-                                        .then(
-                                        function(dataPhoto) {
-                                            var photo = dataPhoto.results[0];
-                                                return {
-                                                    url: photo.file.url,
-                                                    objectId: photo.album.objectId
-                                            }
-                                        },
-                                        function(error) {
-                                            errorFunctions.errorMessage(error);
-                                        }
-                                    ).then(
-                                        function(result) {
-                                            var url = result.url;
-                                            var newData = {
-                                                photoUrl: url
-                                            };
-                                            _this.operator.album.put(result.objectId, newData);
-                                        },
-                                        function(error) {
-                                            errorFunctions.errorMessage(error);
-                                        }
-                                    );
-                                    $(selector).append(Mustache.render(View.listAlbums.responseText, albums[album]));
-                                }
-                            },
-                            function(error) {
-                                errorFunctions.errorMessage(error);
-                            }
-                        )
+                    for (var user = 0; user < userData.length; user++) {
+                        var check = userData[user].hasAlbums;
+                        if(check) {
+                            $(selector).append(Mustache.render(View.albumOwner.responseText, userData[user]));
+                        }
                     }
-
                 },
                 function(error) {
                     errorFunctions.errorMessage(error);
                 })
-
+                .then(
+                function() {
+                    var articles = $('article').get();
+                    for (var i = 0; i < articles.length; i++) {
+                        var userId = $(articles[i]).attr('id');
+                        printUserAlbums(userId);
+                    }
+                },
+                function(error) {
+                    errorFunctions.errorMessage(error);
+                }
+            ).done();
         };
 
         Controller.prototype.displayAlbumPhotoViewer = function(selector) {
             var _this = this;
-            var id = '';
-            this.operator.photo.getByAlbum(id)
+
+            this.operator.photo.getAll()
                 .then(
                 function(data) {
                     var photos = data.results;
                     for (var photo in photos) {
-                        $(selector).append(Mustache.render(View.photoViewer, photos[photo]))
+                        $(selector).append(Mustache.render(View.Photo.responseText, photos[photo]));
                     }
                 }
             );

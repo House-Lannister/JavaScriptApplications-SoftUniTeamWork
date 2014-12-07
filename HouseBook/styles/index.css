@@ -288,7 +288,7 @@ body > footer > ul:hover {
     top: 0;
     font-size: 20px; }
 
-#submit-comment {
+.submit-comment {
   border: none;
   overflow: hidden;
   position: relative;
@@ -303,16 +303,16 @@ body > footer > ul:hover {
   border-bottom: 0 solid white;
   color: papayawhip !important;
   transition: 0.2s; }
-  #submit-comment:hover {
+  .submit-comment:hover {
     cursor: pointer;
     height: 30px;
     text-decoration: underline;
     color: papayawhip;
     background-color: rgba(165, 42, 42, 0.7);
     box-shadow: black 1px 1px 8px; }
-  #submit-comment:active {
+  .submit-comment:active {
     background-color: black; }
-  #submit-comment:focus {
+  .submit-comment:focus {
     outline: none; }
 
 /*# sourceMappingURL=index.css.map */

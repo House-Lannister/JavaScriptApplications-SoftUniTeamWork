@@ -159,7 +159,7 @@ define(['ajaxRequester'], function (ajaxRequester) {
             }
 
             LogIn.prototype.loginUser = function(loginData) {
-                return ajaxRequester.get(HEADERS, this.serviceUrl, JSON.parse(loginData));
+                return ajaxRequester.login(HEADERS, this.serviceUrl, loginData);
             };
 
             return LogIn

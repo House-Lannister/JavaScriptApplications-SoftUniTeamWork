@@ -238,6 +238,23 @@ define(['underscore', 'mustache', 'viewContainer'], function(_, Mustache, View) 
             }
         };
 
+        Controller.prototype.uploadPhoto = function(file) {
+            var _thisPhoto = this.operator.photo;
+            _thisPhoto.addFile(file)
+                .then(
+                function (data) {
+                    console.log(data.url);
+                    _thisPhoto.addPhoto(data);
+                })
+                .then(function(photo) {
+                    console.log('Photo added.');
+                },
+                function(error) {
+                    errorFunctions.errorMessage(error);
+                }
+            )
+        };
+
         var errorFunctions = (function(){
             function errorMessage(error) {
                 console.log(error);

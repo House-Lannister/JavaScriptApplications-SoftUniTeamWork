@@ -102,6 +102,12 @@
                     $('#user').text(user.username);
                     $('#userTab').show();
                     $('#logInTab').hide();
+                    $('#submit-img-button').on('change', function(e) {
+                        var files = e.target.files || e.dataTransfer.files;
+                        // Our file var now holds the selected file
+                        var file = files[0];
+                        mainCtrl.uploadPhoto(file);
+                    });
                 });
                 //this.get('#user/:id/album/:name/photo/:id', function() {
                 //

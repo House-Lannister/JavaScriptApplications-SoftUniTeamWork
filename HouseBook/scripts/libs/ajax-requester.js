@@ -57,12 +57,40 @@ define(['q'], function(Q) {
             return deferLog.promise;
         }
 
+        function makeUploadFileRequest(headers, url, file) {
+            var deferUpload = Q.defer();
+            var fileHeaders = headers;
+            return $.ajax({
+                type: 'POST',
+                beforeSend: function(request) {
+                    request.setRequestHeader("X-Parse-Application-Id", fileHeaders['X-Parse-Application-Id']);
+                    request.setRequestHeader("X-Parse-REST-API-Key", fileHeaders['X-Parse-REST-API-Key']);
+                    request.setRequestHeader("Content-Type", file.type);
+                },
+                url: url,
+                processData: false,
+                contentType: false,
+                data: file,
+                success: function(data) {
+                    console.log("File available at: " + data.url);
+                    //alert("File available at: " + data.url);
+                    deferUpload.resolve(data);
+                },
+                error: function(error) {
+                    deferUpload.reject(error);
+                }
+            });
+
+            return deferLog.promise;
+        }
+
         return {
             get: makeGetRequest,
             put: makePutRequest,
             post: makePostRequest,
             remove: makeDeleteRequest,
-            login: makeLoginRequest
+            login: makeLoginRequest,
+            upload: makeUploadFileRequest
         }
     }());
 });

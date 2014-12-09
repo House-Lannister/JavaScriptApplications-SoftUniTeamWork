@@ -45,8 +45,8 @@ define(['ajaxRequester'], function (ajaxRequester) {
                 return ajaxRequester.get(HEADERS, this.serviceUrl);
             };
 
-            Album.prototype.add = function(newData) {
-                return ajaxRequester.post(HEADERS, this.serviceUrl, newData);
+            Album.prototype.add = function(file) {
+                return ajaxRequester.post(fileHeaders, this.serviceUrl, file);
             };
 
             Album.prototype.put = function(albumId, dataChange) {
@@ -74,8 +74,28 @@ define(['ajaxRequester'], function (ajaxRequester) {
                 return ajaxRequester.get(HEADERS, this.serviceUrl);
             };
 
-            Photo.prototype.add = function(newData) {
-                return ajaxRequester.post(HEADERS, this.serviceUrl, newData);
+            Photo.prototype.addFile = function(file) {
+                var fileName = file.name.replace(/ /g,'');
+                var fileExt = (/[^.]+$/.exec(fileName))[0];
+                var fileUrl = ROOT_URL + 'files/' + encodeURI(fileName);
+                return ajaxRequester.upload(HEADERS, fileUrl, file);
+            };
+
+            Photo.prototype.addPhoto = function(photo) {
+                var fileName = (/[^-]+$/.exec(photo.name))[0];
+                var fileExt = (/[^.]+$/.exec(fileName))[0];
+                var data = {
+                    album: {__type: "Pointer", className: "Album", objectId:"3rqI3iEReF"},
+                    name: fileName,
+                    file: {
+                        __type: "File",
+                        name: photo.name,
+                        url: photo.url
+                    },
+                    type: fileExt,
+                    votes: 0,
+                    info: 'none'};
+                return ajaxRequester.post(HEADERS, this.serviceUrl, data);
             };
 
             Photo.prototype.put = function(dataChange) {
